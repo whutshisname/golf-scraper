@@ -1,0 +1,11 @@
+/* Home.module.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.shaftTypeList {
+  list-style-type: none;
+  padding: 0;
+}
