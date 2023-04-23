@@ -1,5 +1,4 @@
-import puppeteer from 'puppeteer';
-import chromium from 'chrome-aws-lambda';
+import { chromium } from 'playwright';
 
 export default async function handler(req, res) {
   const pageUrl = req.query.pageUrl;
@@ -9,17 +8,20 @@ export default async function handler(req, res) {
     return;
   }
 
-  const browser = await puppeteer.launch({
-    args: chromium.args,
-    executablePath: await chromium.executablePath,
+  const browser = await chromium.launch({
+    args: [],
     headless: true,
   });
 
-  const page = await browser.newPage();
+  const context = await browser.newContext({
+    ignoreHTTPSErrors: true,
+    viewport: null,
+  });
+
+  const page = await context.newPage();
   await page.goto(pageUrl);
 
-  const uniqueShaftTypes = await page.evaluate(() => {
-    const rows = document.querySelectorAll('.variantRow');
+  const uniqueShaftTypes = await page.$$eval('.variantRow', (rows) => {
     const shaftTypeSet = new Set();
 
     for (const row of rows) {

@@ -49,45 +49,54 @@ function renderPageTitleTable(pageTitle, cellShaftTypes) {
     rows.push(...subRows);
   });
 
-  return (
-    <div key={pageTitle}>
-      <h2>{pageTitle}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Cell Shaft Type</th>
-            <th>Cell Club</th>
-            <th>Like New</th>
-            <th>Very Good</th>
-            <th>Good</th>
-            <th>Average</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    </div>
-  );
+  return {
+    pageTitle,
+    content: (
+      <div key={pageTitle}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Cell Shaft Type</th>
+              <th>Cell Club</th>
+              <th>Like New</th>
+              <th>Very Good</th>
+              <th>Good</th>
+              <th>Average</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      </div>
+    ),
+  };
 }
 
 function HomePage() {
   const [uniqueShaftTypes, setUniqueShaftTypes] = useState([]);
   const [selectedShaftTypes, setSelectedShaftTypes] = useState([]);
   const [uniqueCellClubValues, setUniqueCellClubValues] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   const [availableUrls, setAvailableUrls] = useState([
-    'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-max.html',
-    'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-ls.html',
-    'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-speed.html',
-    'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-max.html',
+    { displayValue: 'Rogue ST Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-max.html', group: 'fairway wood' },
+    { displayValue: 'Rogue ST LS', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-ls.html', group: 'fairway wood' },
+    { displayValue: 'Epic Speed', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-speed.html', group: 'fairway wood' },
+    { displayValue: 'Epic Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-max.html', group: 'fairway wood' },
+    { displayValue: 'Rogue ST MAX', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2022-rogue-st-max.html', group: 'Driver' },
+    { displayValue: 'Rogue ST MAX LS', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2022-rogue-st-max-ls.html', group: 'Driver' },
+    { displayValue: 'Epic MAX', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-max.html', group: 'Driver' },
+    { displayValue: 'Epic MAX LS', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-max-ls.html', group: 'Driver' },
+    { displayValue: 'Epic Speed', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-speed.html', group: 'Driver' },
   ]);
-  
-  const [selectedUrls, setSelectedUrls] = useState([...availableUrls]);
-  
+
+  const [selectedUrls, setSelectedUrls] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const urls = selectedUrls;
-
       const shaftTypes = [];
+      setLoading(true);
 
       for (const url of urls) {
         const res = await fetch(`/api/uniqueShaftTypes?pageUrl=${encodeURIComponent(url)}`);
@@ -103,18 +112,19 @@ function HomePage() {
       const sortedShaftTypes = shaftTypes.sort();
 
       setUniqueShaftTypes(sortedShaftTypes);
+      setLoading(false);
     }
 
     fetchData();
-  }, [selectedShaftTypes, selectedUrls]);
+  }, [selectedUrls]);
 
   useEffect(() => {
     async function fetchData() {
       if (selectedShaftTypes.length === 0 || selectedUrls.length === 0) {
+        setLoadingStatus(false);
         return;
       }
 
-      // Update this line to use selectedUrls instead of the constant urls
       const urls = selectedUrls;
 
       const cellClubValues = [];
@@ -126,18 +136,19 @@ function HomePage() {
         data.uniqueCellClubValues.forEach((cellClubObj) => {
           cellClubValues.push(cellClubObj);
         });
-
       }
 
       const groupedByPageTitle = groupByPageTitle(cellClubValues);
       const pageTitleTables = Object.entries(groupedByPageTitle).map(([pageTitle, cellClubs]) => renderPageTitleTable(pageTitle, cellClubs));
       setUniqueCellClubValues(pageTitleTables);
+      setLoadingStatus(false);
     }
 
     fetchData();
-  }, [selectedShaftTypes, selectedUrls]); // Add selectedUrls to the dependency array
+  }, [selectedShaftTypes, selectedUrls]);
 
   function handleShaftTypeChange(event) {
+    setLoadingStatus(true);
     const target = event.target;
     const value = target.value;
     const isChecked = target.checked;
@@ -148,34 +159,46 @@ function HomePage() {
   }
 
   function handleUrlChange(event) {
+    setLoadingStatus(true);
     const target = event.target;
-    const value = target.value;
+    const urlObj = availableUrls.find((urlObj) => urlObj.url === target.value);
     const isChecked = target.checked;
 
     setSelectedUrls((prevSelectedUrls) =>
-      isChecked ? [...prevSelectedUrls, value] : prevSelectedUrls.filter((url) => url !== value),
+      isChecked ? [...prevSelectedUrls, urlObj.url] : prevSelectedUrls.filter((selectedUrl) => selectedUrl !== urlObj.url),
     );
   }
 
+  const groupedUrls = availableUrls.reduce((acc, urlObj) => {
+    const group = urlObj.group || 'Other'; // default to 'Other' if group is not defined
+    if (!acc[group]) {
+      acc[group] = [];
+    }
+    acc[group].push(urlObj);
+    return acc;
+  }, {});
+
   return (
     <div className={styles.container}>
-      <h1>Shaft Types</h1>
+      <h1 className={styles.title}>Shaft Types</h1>
       <form>
-        <label htmlFor="urls">Select URLs:</label>
-        <div id="urls">
-          {availableUrls.map((url, index) => (
-            <div key={index}>
-              <input
-                type="checkbox"
-                id={`url-${index}`}
-                value={url}
-                checked={selectedUrls.includes(url)} 
-                onChange={handleUrlChange}
-              />
-              <label htmlFor={`url-${index}`}>{url}</label>
-            </div>
-          ))}
-        </div>
+        {Object.entries(groupedUrls).map(([group, urls]) => (
+          <div key={group} className={styles.group}>
+            <h3 className={styles.groupHeader}>{group}</h3>
+            {urls.map((urlObj, index) => (
+              <div key={`${group}-${index}`}>
+                <input
+                  type="checkbox"
+                  id={`${group}-url-${index}`}
+                  value={urlObj.url}
+                  checked={selectedUrls.includes(urlObj.url)}
+                  onChange={handleUrlChange}
+                />
+                <label htmlFor={`${group}-url-${index}`}>{urlObj.displayValue}</label>
+              </div>
+            ))}
+          </div>
+        ))}
 
         <label htmlFor="shaftTypes">Select Shaft Types:</label>
         <div id="shaftTypes">
@@ -193,8 +216,18 @@ function HomePage() {
           ))}
         </div>
       </form>
-      <h1>Cell Club Values</h1>
-      {uniqueCellClubValues}
+      <h1 className={styles.title}>Cell Club Values</h1>
+      {loadingStatus ? (
+        <div>Loading...</div> // Replace this with your desired loading indicator
+      ) : (
+        uniqueCellClubValues.map(({ pageTitle, content }, index) => (
+          <div key={index} className={styles.tableContainer}>
+            <h2>{pageTitle}</h2>
+            {content}
+          </div>
+        ))
+      )}
+
     </div>
   );
 }
