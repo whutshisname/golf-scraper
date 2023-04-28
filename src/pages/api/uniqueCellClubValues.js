@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+import puppeteer from 'puppeteer';
 
 export default async function handler(req, res) {
   const pageUrl = req.query.pageUrl;
@@ -17,22 +17,16 @@ export default async function handler(req, res) {
   const selectedValues = selectedValuesString.split(',');
 
   let browser = null;
-  let context = null;
   let page = null;
 
   try {
-    browser = await chromium.launch({
+    browser = await puppeteer.launch({
       args: [],
       headless: true,
     });
 
-    context = await browser.newContext({
-      ignoreHTTPSErrors: true,
-      viewport: null,
-    });
-
-    page = await context.newPage();
-    await page.goto(pageUrl);
+    page = await browser.newPage();
+    await page.goto(pageUrl, { waitUntil: 'networkidle0' });
 
     const pageTitle = await page.$eval('h1#page-title', (el) => el.textContent.trim());
 
@@ -90,10 +84,8 @@ export default async function handler(req, res) {
     if (page) {
       await page.close();
     }
-    if (context) {
-      await context.close();
+    if (browser) {
+      await browser.close();
     }
-
-
   }
 }
