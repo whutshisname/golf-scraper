@@ -1,4 +1,4 @@
-import { chromium } from 'playwright';
+const puppeteer = require('puppeteer');
 
 export default async function handler(req, res) {
   const pageUrl = req.query.pageUrl;
@@ -8,22 +8,17 @@ export default async function handler(req, res) {
     return;
   }
 
-  const browser = await chromium.launch({
-    args: [],
+  const browser = await puppeteer.launch({
     headless: true,
   });
 
-  const context = await browser.newContext({
-    ignoreHTTPSErrors: true,
-    viewport: null,
-  });
-
-  const page = await context.newPage();
+  const page = await browser.newPage();
   await page.goto(pageUrl);
 
-  const uniqueShaftTypes = await page.$$eval('.variantRow', (rows) => {
+  const uniqueShaftTypes = await page.evaluate(() => {
     const shaftTypeSet = new Set();
 
+    const rows = document.querySelectorAll('.variantRow');
     for (const row of rows) {
       const cellShaftType = row.querySelector('.cellShaftType');
       if (cellShaftType) {

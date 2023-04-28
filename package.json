@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && npx playwright install ",
+    "build": "next build ",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,7 +12,6 @@
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "next": "13.3.1",
-    "playwright": "^1.32.3",
     "puppeteer": "^19.11.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
