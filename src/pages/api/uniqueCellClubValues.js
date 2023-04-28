@@ -43,6 +43,7 @@ export default async function handler(req, res) {
 
       for (const row of rows) {
         const cellShaftType = row.querySelector('.cellShaftType, .variantCell.cellShaftType');
+        const cellShaftFlex = row.querySelector('.cellShaftFlex, .variantCell.cellShaftFlex'); // Add this line
         const cellClub = row.querySelector('.cellClub, .cellLoft');
 
         const cellClubObj = {
@@ -56,6 +57,7 @@ export default async function handler(req, res) {
           if (cellClub) {
             cellClubObj.cellClub = cellClub.textContent.trim();
             cellClubObj.cellShaftType = cellShaftType.textContent.trim();
+            cellClubObj.cellShaftFlex = cellShaftFlex ? cellShaftFlex.textContent.trim() : null; // Add this line
             cellClubObj.pageTitle = pageTitle;
 
             cellClubSet.add(cellClubObj);
@@ -77,6 +79,7 @@ export default async function handler(req, res) {
       }
     }, { selectedValues, pageTitle });
 
+
     console.log(uniqueCellClubValues);
 
     res.status(200).json({ uniqueCellClubValues });
@@ -90,7 +93,7 @@ export default async function handler(req, res) {
     if (context) {
       await context.close();
     }
-   
+
 
   }
 }

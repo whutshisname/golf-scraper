@@ -5,21 +5,23 @@ function groupByPageTitle(cellClubValues) {
   const grouped = {};
 
   cellClubValues.forEach((cellClubObj) => {
-    const { cellClub, pageTitle, cellShaftType, cellVeryGood, cellLikeNew, cellAverage, cellGood } = cellClubObj;
+    const { cellClub, pageTitle, cellShaftType, cellShaftFlex, cellVeryGood, cellLikeNew, cellAverage, cellGood } = cellClubObj;
 
     if (!grouped[pageTitle]) {
       grouped[pageTitle] = {};
     }
 
-    if (!grouped[pageTitle][cellShaftType]) {
-      grouped[pageTitle][cellShaftType] = {
+    const combinedShaftKey = `${cellShaftType} - ${cellShaftFlex}`;
+
+    if (!grouped[pageTitle][combinedShaftKey]) {
+      grouped[pageTitle][combinedShaftKey] = {
         cellClubs: new Set(),
         values: {},
       };
     }
 
-    grouped[pageTitle][cellShaftType].cellClubs.add(cellClub);
-    grouped[pageTitle][cellShaftType].values[cellClub] = { cellVeryGood, cellLikeNew, cellAverage, cellGood };
+    grouped[pageTitle][combinedShaftKey].cellClubs.add(cellClub);
+    grouped[pageTitle][combinedShaftKey].values[cellClub] = { cellVeryGood, cellLikeNew, cellAverage, cellGood, cellShaftFlex };
   });
 
   return grouped;
@@ -30,7 +32,7 @@ function renderPageTitleTable(pageTitle, cellShaftTypes) {
 
   Object.entries(cellShaftTypes).forEach(([cellShaftType, shaftTypeData], shaftTypeIndex) => {
     const subRows = Array.from(shaftTypeData.cellClubs).map((cellClub, index) => {
-      const { cellVeryGood, cellLikeNew, cellAverage, cellGood } = shaftTypeData.values[cellClub];
+      const { cellVeryGood, cellLikeNew, cellAverage, cellGood, cellShaftFlex } = shaftTypeData.values[cellClub];
       return (
         <tr key={`${cellShaftType}-${cellClub}`}>
           {index === 0 && (
@@ -38,6 +40,7 @@ function renderPageTitleTable(pageTitle, cellShaftTypes) {
               {cellShaftType}
             </td>
           )}
+          <td>{cellShaftFlex}</td>
           <td>{cellClub}</td>
           <td>{cellLikeNew}</td>
           <td>{cellVeryGood}</td>
@@ -56,8 +59,9 @@ function renderPageTitleTable(pageTitle, cellShaftTypes) {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Cell Shaft Type</th>
-              <th>Cell Club</th>
+              <th>Shaft Type</th>
+              <th>Shaft Flex</th>
+              <th>Club</th>
               <th>Like New</th>
               <th>Very Good</th>
               <th>Good</th>
@@ -79,15 +83,22 @@ function HomePage() {
   const [loadingStatus, setLoadingStatus] = useState(false);
 
   const [availableUrls, setAvailableUrls] = useState([
-    { displayValue: 'Rogue ST Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-max.html', group: 'fairway wood' },
-    { displayValue: 'Rogue ST LS', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-ls.html', group: 'fairway wood' },
-    { displayValue: 'Epic Speed', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-speed.html', group: 'fairway wood' },
-    { displayValue: 'Epic Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-max.html', group: 'fairway wood' },
+    { displayValue: 'Rogue ST Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-max.html', group: 'Fairway' },
+    { displayValue: 'Rogue ST LS', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2022-rogue-st-ls.html', group: 'Fairway' },
+    { displayValue: 'Epic Speed', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-speed.html', group: 'Fairway' },
+    { displayValue: 'Epic Max', url: 'https://www.callawaygolfpreowned.com/fairway-woods/fwoods-2021-epic-max.html', group: 'Fairway' },
     { displayValue: 'Rogue ST MAX', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2022-rogue-st-max.html', group: 'Driver' },
     { displayValue: 'Rogue ST MAX LS', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2022-rogue-st-max-ls.html', group: 'Driver' },
     { displayValue: 'Epic MAX', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-max.html', group: 'Driver' },
     { displayValue: 'Epic MAX LS', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-max-ls.html', group: 'Driver' },
     { displayValue: 'Epic Speed', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2021-epic-speed.html', group: 'Driver' },
+    { displayValue: 'Rogue ST Pro', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2022-rogue-st-pro.html', group: 'Hybrid' },
+    { displayValue: 'Apex Pro 21', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2021-apex-pro.html', group: 'Hybrid' },
+    { displayValue: 'Apex 21', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2021-apex.html', group: 'Hybrid' },
+    { displayValue: 'Epic Super', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2022-epic-super.html', group: 'Hybrid' },
+    { displayValue: 'Rogue ST MAX', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2022-rogue-st-max.html', group: 'Hybrid' },
+    { displayValue: 'Super Hybrid', url: 'https://www.callawaygolfpreowned.com/hybrids/hybrids-2020-super.html', group: 'Hybrid' },
+    { displayValue: 'Rogue ST Triple Diamond LS', url: 'https://www.callawaygolfpreowned.com/drivers/drivers-2022-rogue-st-triple-diamond-ls.html', group: 'Driver' },
   ]);
 
   const [selectedUrls, setSelectedUrls] = useState([]);
@@ -95,26 +106,22 @@ function HomePage() {
   useEffect(() => {
     async function fetchData() {
       const urls = selectedUrls;
-      const shaftTypes = [];
       setLoading(true);
-
-      for (const url of urls) {
+  
+      const fetchShaftTypesPromises = urls.map(async (url) => {
         const res = await fetch(`/api/uniqueShaftTypes?pageUrl=${encodeURIComponent(url)}`);
-        const data = await res.json();
-        console.log(data);
-        data.uniqueShaftTypes.forEach((shaftType) => {
-          if (!shaftTypes.includes(shaftType)) {
-            shaftTypes.push(shaftType);
-          }
-        });
-      }
-
-      const sortedShaftTypes = shaftTypes.sort();
-
-      setUniqueShaftTypes(sortedShaftTypes);
+        return res.json();
+      });
+  
+      const responses = await Promise.all(fetchShaftTypesPromises);
+      const shaftTypes = responses.flatMap(data => data.uniqueShaftTypes)
+        .filter((value, index, self) => self.indexOf(value) === index) // Unique values
+        .sort();
+  
+      setUniqueShaftTypes(shaftTypes);
       setLoading(false);
     }
-
+  
     fetchData();
   }, [selectedUrls]);
 
@@ -124,26 +131,23 @@ function HomePage() {
         setLoadingStatus(false);
         return;
       }
-
+  
       const urls = selectedUrls;
-
-      const cellClubValues = [];
-
-      for (const url of urls) {
+  
+      const fetchCellClubValuesPromises = urls.map(async (url) => {
         const res = await fetch(`/api/uniqueCellClubValues?pageUrl=${encodeURIComponent(url)}&selectedValues=${encodeURIComponent(selectedShaftTypes.join(','))}`);
-        const data = await res.json();
-        console.log(data);
-        data.uniqueCellClubValues.forEach((cellClubObj) => {
-          cellClubValues.push(cellClubObj);
-        });
-      }
-
+        return res.json();
+      });
+  
+      const responses = await Promise.all(fetchCellClubValuesPromises);
+      const cellClubValues = responses.flatMap(data => data.uniqueCellClubValues);
+  
       const groupedByPageTitle = groupByPageTitle(cellClubValues);
       const pageTitleTables = Object.entries(groupedByPageTitle).map(([pageTitle, cellClubs]) => renderPageTitleTable(pageTitle, cellClubs));
       setUniqueCellClubValues(pageTitleTables);
       setLoadingStatus(false);
     }
-
+  
     fetchData();
   }, [selectedShaftTypes, selectedUrls]);
 
@@ -169,6 +173,12 @@ function HomePage() {
     );
   }
 
+  function resetAll() {
+    setSelectedShaftTypes([]);
+    setSelectedUrls([]);
+    setUniqueCellClubValues([]);
+  }
+
   const groupedUrls = availableUrls.reduce((acc, urlObj) => {
     const group = urlObj.group || 'Other'; // default to 'Other' if group is not defined
     if (!acc[group]) {
@@ -181,6 +191,7 @@ function HomePage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Shaft Types</h1>
+      <button onClick={resetAll}>Reset</button> {/* Add this reset button */}
       <form>
         {Object.entries(groupedUrls).map(([group, urls]) => (
           <div key={group} className={styles.group}>
