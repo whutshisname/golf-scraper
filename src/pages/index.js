@@ -19,7 +19,7 @@ const items = [
   { pid: 'hybrids-2022-epic-super', cgid: 'hybrids', displayValue: 'Epic Super' },
   { pid: 'hybrids-2022-rogue-st-max', cgid: 'hybrids', displayValue: 'Rogue ST Max' },
   { pid: 'hybrids-2020-super', cgid: 'hybrids', displayValue: 'Super Hybrid' },
-  { pid: 'drivers-2022-rogue-st-triple-diamond-ls', cgid: 'drivers', displayValue: 'Rogue ST Triple Diamond LS' },
+  { pid: 'drivers-2022-rogue-st-triple-diamond-ls', cgid: 'drivers', displayValue: 'Rogue ST Triple Diamond LS' }, 
 ];
 
 export default function CheckboxPage() {
