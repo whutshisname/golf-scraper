@@ -32,3 +32,15 @@ tr:nth-child(even) {
 input[type="checkbox"] {
   margin-right: 5px;
 }
+
+.group-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}

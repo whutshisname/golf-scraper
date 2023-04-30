@@ -16,7 +16,7 @@ const items = [
   { pid: 'hybrids-2022-rogue-st-pro', cgid: 'hybrids', displayValue: 'Rogue ST Pro' },
   { pid: 'hybrids-2021-apex-pro', cgid: 'hybrids', displayValue: 'Apex Pro 21' },
   { pid: 'hybrids-2021-apex', cgid: 'hybrids', displayValue: 'Apex 21' },
-  { pid: 'hybrids-2022-epic-super', cgid: 'hybrids', displayValue: 'Epic Super' },
+  { pid: 'hybrids-2022-epic-super', cgid: 'hybrids', displayValue: 'Epic Super Hybrid' },
   { pid: 'hybrids-2022-rogue-st-max', cgid: 'hybrids', displayValue: 'Rogue ST Max' },
   { pid: 'hybrids-2020-super', cgid: 'hybrids', displayValue: 'Super Hybrid' },
   { pid: 'drivers-2022-rogue-st-triple-diamond-ls', cgid: 'drivers', displayValue: 'Rogue ST Triple Diamond LS' }, 
@@ -27,20 +27,14 @@ export default function CheckboxPage() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [productData, setProductData] = useState([]);
 
-  const handleItemChange = async (item) => {
-    let updatedSelectedItems;
-    if (selectedItems.includes(item)) {
-      updatedSelectedItems = selectedItems.filter((i) => i !== item);
-    } else {
-      updatedSelectedItems = [...selectedItems, item];
-    }
-    setSelectedItems(updatedSelectedItems);
-
-    let pairs = updatedSelectedItems.map((pid) => {
+  const handleItemChange = async (selectedItemIds) => {
+    setSelectedItems(selectedItemIds);
+  
+    let pairs = selectedItemIds.map((pid) => {
       const foundItem = items.find((i) => i.pid === pid);
       return foundItem ? { pid: foundItem.pid, cgid: foundItem.cgid } : null;
     }).filter((pair) => pair !== null);
-
+  
     // Use Promise.all to fetch data for all pairs in parallel
     const fetchData = async (pair) => {
       const requestOptions = {
@@ -51,16 +45,15 @@ export default function CheckboxPage() {
       const response = await fetch('/api/product-variants', requestOptions);
       return await response.json();
     };
-
+  
     const allDataPromises = pairs.map((pair) => fetchData(pair));
     const allData = await Promise.all(allDataPromises);
     const combinedData = allData.flat();
     setProductData(combinedData);
   };
 
-
   return (
-    <div>
+    <div className="group-container">
       {uniqueCgids.map((cgid) => (
         <GroupedCheckboxList
           key={cgid}

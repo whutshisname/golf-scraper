@@ -15,7 +15,7 @@ function ProductTable({ products, items }) {
 
   const parseVariantValue = (value) => {
     if (Array.isArray(value)) {
-      return <a href={value[3]}>{value[1]}</a>;
+      return <a href={value[3]} target="_blank">{value[1]}</a>;
     } else if (typeof value === 'object') {
       return Object.values(value).join(' ');
     } else {
