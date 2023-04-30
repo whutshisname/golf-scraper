@@ -1,0 +1,21 @@
+/* ProductVariants.module.css */
+.divTable {
+    display: table;
+    width: 100%;
+  }
+  
+  .divTableRow {
+    display: table-row;
+  }
+  
+  .divTableHeaderRow {
+    display: table-row;
+    font-weight: bold;
+  }
+  
+  .divTableCell {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
