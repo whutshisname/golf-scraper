@@ -19,8 +19,8 @@ const items = [
   { pid: 'hybrids-2022-epic-super', cgid: 'hybrids', displayValue: 'Epic Super Hybrid' },
   { pid: 'hybrids-2022-rogue-st-max', cgid: 'hybrids', displayValue: 'Rogue ST Max' },
   { pid: 'hybrids-2020-super', cgid: 'hybrids', displayValue: 'Super Hybrid' },
-  { pid: 'drivers-2022-rogue-st-triple-diamond-ls', cgid: 'drivers', displayValue: 'Rogue ST Triple Diamond LS' }, 
-  { pid: 'fwoods-2022-apex-utility-wood', cgid: 'fairway-woods', displayValue: 'Apex Utility Wood' }, 
+  { pid: 'drivers-2022-rogue-st-triple-diamond-ls', cgid: 'drivers', displayValue: 'Rogue ST Triple Diamond LS' },
+  { pid: 'fwoods-2022-apex-utility-wood', cgid: 'fairway-woods', displayValue: 'Apex Utility Wood' },
 ];
 
 export default function CheckboxPage() {
@@ -30,12 +30,12 @@ export default function CheckboxPage() {
 
   const handleItemChange = async (selectedItemIds) => {
     setSelectedItems(selectedItemIds);
-  
+
     let pairs = selectedItemIds.map((pid) => {
       const foundItem = items.find((i) => i.pid === pid);
       return foundItem ? { pid: foundItem.pid, cgid: foundItem.cgid } : null;
     }).filter((pair) => pair !== null);
-  
+
     // Use Promise.all to fetch data for all pairs in parallel
     const fetchData = async (pair) => {
       const requestOptions = {
@@ -46,7 +46,7 @@ export default function CheckboxPage() {
       const response = await fetch('/api/product-variants', requestOptions);
       return await response.json();
     };
-  
+
     const allDataPromises = pairs.map((pair) => fetchData(pair));
     const allData = await Promise.all(allDataPromises);
     const combinedData = allData.flat();
@@ -65,10 +65,10 @@ export default function CheckboxPage() {
         />
       ))}
 
-      {/*       <CheckboxList data={productData} />
- */}
-      <ProductTable products={productData} items={items} />
-      <ExpandJSONSection data={productData} />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <ProductTable products={productData} items={items} />
+        <ExpandJSONSection data={productData} />
+      </div>
     </div>
   );
 }
