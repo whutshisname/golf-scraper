@@ -118,6 +118,16 @@ const items = [
     "cgid": "hybrids",
     "displayValue": "Super Hybrid",
     "pid": "hybrids-2020-super"
+  },
+  {
+      "cgid": "wedges",
+      "displayValue": "JAWS MD5 Platinum Chrome Wedges",
+      "pid": "wedges-2019-md5-jaws-chrome"
+  },
+  {
+      "cgid": "wedges",
+      "displayValue": "JAWS MD5 Platinum Chrome Wedges",
+      "pid": "wedges-2019-md5-jaws-chrome"
   }
 ];
 
