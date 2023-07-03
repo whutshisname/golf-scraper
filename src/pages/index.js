@@ -121,13 +121,8 @@ const items = [
   },
   {
       "cgid": "wedges",
-      "displayValue": "JAWS MD5 Platinum Chrome Wedges",
-      "pid": "wedges-2019-md5-jaws-chrome"
-  },
-  {
-      "cgid": "wedges",
-      "displayValue": "JAWS MD5 Platinum Chrome Wedges",
-      "pid": "wedges-2019-md5-jaws-chrome"
+      "displayValue": "JAWS MD5 Tour Grey Wedges",
+      "pid": "wedges-2019-md5-jaws-tour-grey"
   }
 ];
 
