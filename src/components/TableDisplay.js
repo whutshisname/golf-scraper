@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function ProductTable({ products, items }) {
   const variantLabels = [
+    'Club/Set',
     'Club',
     'Loft',
     'Shaft Type',

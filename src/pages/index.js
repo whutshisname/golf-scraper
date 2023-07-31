@@ -128,6 +128,16 @@ const items = [
       "cgid": "wedges",
       "displayValue": "JAWS MD5 Platinum Chrome Wedges",
       "pid": "wedges-2019-md5-jaws-chrome"
+  },
+  {
+      "cgid": "iron-sets",
+      "displayValue": "Apex 21 Irons",
+      "pid": "irons-2021-apex"
+  },
+  {
+      "cgid": "iron-sets",
+      "displayValue": "Apex Pro 21 Irons",
+      "pid": "irons-2021-apex-pro"
   }
 ];
 
