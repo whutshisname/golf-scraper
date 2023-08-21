@@ -136,6 +136,11 @@ const items = [
   },
   {
       "cgid": "iron-sets",
+      "displayValue": "Rogue ST Pro Irons",
+      "pid": "irons-2022-rogue-st-pro"
+  },
+  {
+      "cgid": "iron-sets",
       "displayValue": "Apex Pro 21 Irons",
       "pid": "irons-2021-apex-pro"
   }
