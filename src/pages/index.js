@@ -143,6 +143,16 @@ const items = [
       "cgid": "iron-sets",
       "displayValue": "Apex Pro 21 Irons",
       "pid": "irons-2021-apex-pro"
+  },
+  {
+      "cgid": "other-brand-single-irons",
+      "displayValue": "TaylorMade 2022 Stealth Irons",
+      "pid": "taylormade-stealth-irons-2022"
+  },
+  {
+      "cgid": "other-brand-single-irons",
+      "displayValue": "TaylorMade SIM2 Max OS Irons",
+      "pid": "taylormade-sim2-max-os-irons-2021"
   }
 ];
 
