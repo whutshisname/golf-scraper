@@ -163,7 +163,7 @@ function ProductTable({ products, items }) {
     {
       field: 'product',
       headerName: 'Product',
-      flex: 4,
+      flex: 3,
       renderCell: (params) => displayValue(params.value),
       renderHeader: () => null,
     },
@@ -171,7 +171,7 @@ function ProductTable({ products, items }) {
       let columnConfig = {
         field: label,
         headerName: label,
-        flex: label === 'Shaft Type' ? 5 : 2,
+        flex: label === 'Shaft Type' ? 5 : 1,
         renderCell: (params) => params.value ? parseVariantValue(params.value) : '-',
         disableClickEventBubbling: true,
         renderHeader: () => label,
@@ -203,6 +203,7 @@ function ProductTable({ products, items }) {
         columns={columns}
         pageSize={5}
         autoHeight
+        getRowHeight={() => 'auto'}
         disableColumnMenu
         getRowId={(row) => row.id}
         components={{
