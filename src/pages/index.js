@@ -120,39 +120,39 @@ const items = [
     "pid": "hybrids-2020-super"
   },
   {
-      "cgid": "wedges",
-      "displayValue": "JAWS MD5 Tour Grey Wedges",
-      "pid": "wedges-2019-md5-jaws-tour-grey"
+    "cgid": "wedges",
+    "displayValue": "JAWS MD5 Tour Grey Wedges",
+    "pid": "wedges-2019-md5-jaws-tour-grey"
   },
   {
-      "cgid": "wedges",
-      "displayValue": "JAWS MD5 Platinum Chrome Wedges",
-      "pid": "wedges-2019-md5-jaws-chrome"
+    "cgid": "wedges",
+    "displayValue": "JAWS MD5 Platinum Chrome Wedges",
+    "pid": "wedges-2019-md5-jaws-chrome"
   },
   {
-      "cgid": "iron-sets",
-      "displayValue": "Apex 21 Irons",
-      "pid": "irons-2021-apex"
+    "cgid": "iron-sets",
+    "displayValue": "Apex 21 Irons",
+    "pid": "irons-2021-apex"
   },
   {
-      "cgid": "iron-sets",
-      "displayValue": "Rogue ST Pro Irons",
-      "pid": "irons-2022-rogue-st-pro"
+    "cgid": "iron-sets",
+    "displayValue": "Rogue ST Pro Irons",
+    "pid": "irons-2022-rogue-st-pro"
   },
   {
-      "cgid": "iron-sets",
-      "displayValue": "Apex Pro 21 Irons",
-      "pid": "irons-2021-apex-pro"
+    "cgid": "iron-sets",
+    "displayValue": "Apex Pro 21 Irons",
+    "pid": "irons-2021-apex-pro"
   },
   {
-      "cgid": "other-brand-single-irons",
-      "displayValue": "TaylorMade 2022 Stealth Irons",
-      "pid": "taylormade-stealth-irons-2022"
+    "cgid": "other-brand-single-irons",
+    "displayValue": "TaylorMade 2022 Stealth Irons",
+    "pid": "taylormade-stealth-irons-2022"
   },
   {
-      "cgid": "other-brand-single-irons",
-      "displayValue": "TaylorMade SIM2 Max OS Irons",
-      "pid": "taylormade-sim2-max-os-irons-2021"
+    "cgid": "other-brand-single-irons",
+    "displayValue": "TaylorMade SIM2 Max OS Irons",
+    "pid": "taylormade-sim2-max-os-irons-2021"
   }
 ];
 
@@ -199,10 +199,15 @@ export default function CheckboxPage() {
         />
       ))}
 
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <ProductTable products={productData} items={items} />
-        <ExpandJSONSection data={productData} />
-      </div>
+      {
+        productData.length > 0 && (
+          <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+            <ProductTable products={productData} items={items} />
+            <ExpandJSONSection data={productData} />
+          </div>
+
+        )
+      }
     </div>
   );
 }

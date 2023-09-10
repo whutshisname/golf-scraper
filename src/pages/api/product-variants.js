@@ -5,9 +5,9 @@ export default async function handler(req, res) {
     return;
   }
 
-  console.log (req.bod);
+  //console.log (req.bod);
   const { pairs } = req.body;
-  console.log (pairs);
+  //console.log (pairs);
   
   if (!pairs || !Array.isArray(pairs)) {
     res.status(400).json({ message: 'Invalid request body' });
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   const fetchProductVariants = async (pid, cgid) => {
     const url = `https://www.callawaygolfpreowned.com/on/demandware.store/Sites-CGPO5-Site/default/Product-VariantData?pid=${pid}&cgid=${cgid}&format=json`;
-    console.log(url);
+    //console.log(url);
 
     try {
       const response = await fetch(url);
@@ -31,9 +31,9 @@ export default async function handler(req, res) {
 
   for (const pair of pairs) {
     const data = await fetchProductVariants(pair.pid, pair.cgid);
-    console.log(data);
+    //console.log(data);
     if (data) {
-      console.log(JSON.stringify(data, null, 2));
+      //console.log(JSON.stringify(data, null, 2));
 
       results.push(data);
     }
