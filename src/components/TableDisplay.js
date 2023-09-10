@@ -99,10 +99,16 @@ function ProductTable({ products, items }) {
   }, []);
 
   function FiltersToolbar() {
+    // Determine unique values for each label
+    const uniqueValues = {};
+    variantLabels.forEach(label => {
+      uniqueValues[label] = [...new Set(variants.map(variant => variant[label]))].filter(value => value);
+    });
+  
     return (
       <div
         ref={toolbarRef}
-        style={{ display: 'flex', justifyContent: 'space-between', padding: '8px', background: '#f5f5f5' }}
+        style={{ display: 'flex', justifyContent: 'flex-start', padding: '8px', background: '#f5f5f5' }} // justifyContent is changed to 'flex-start'
       >
         {variantLabels.map((label) => {
           if (
@@ -110,12 +116,14 @@ function ProductTable({ products, items }) {
             label === 'Like New' ||
             label === 'Very Good' ||
             label === 'Good' ||
-            label === 'Average'
+            label === 'Average' ||
+            label === 'Length' ||
+            uniqueValues[label].length === 0
           ) {
             return null;
           }
           return (
-            <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '16px' }}> {/* added marginRight for spacing between filters */}
               <span>{label}</span>
               <Select
                 onBlur={(e) => e.stopPropagation()}
@@ -138,55 +146,50 @@ function ProductTable({ products, items }) {
                 IconComponent={ArrowDropDownIcon}
               >
                 <MenuItem value="">All</MenuItem>
-                {[...new Set(variants.map((variant) => variant[label]))]
-                  .filter((value) => value)
-                  .sort()
-                  .map((value) => (
-                    <MenuItem key={value} value={value}>
-                      {value}
-                    </MenuItem>
-                  ))}
+                {uniqueValues[label].sort().map((value) => (
+                  <MenuItem key={value} value={value}>
+                    {value}
+                  </MenuItem>
+                ))}
               </Select>
             </div>
           );
         })}
       </div>
     );
-  }
-
+  }  
+  
   const columns = [
     {
       field: 'product',
       headerName: 'Product',
-      flex: 1,
+      flex: 4,
       renderCell: (params) => displayValue(params.value),
+      renderHeader: () => null,
     },
-    ...variantLabels.map((label) => ({
-      field: label,
-      headerName: label,
-      flex: 1,
-      renderCell: (params) => params.value ? parseVariantValue(params.value) : '-',
-      disableClickEventBubbling: true,
-      renderHeader: (params) => {
-        if (
-          label === 'Outlet' ||
-          label === 'Like New' ||
-          label === 'Very Good' ||
-          label === 'Good' ||
-          label === 'Average'
-        ) {
-          return label;
-        }
-        return null;
-      },
-      sortComparator: (
+    ...variantLabels.map((label) => {
+      let columnConfig = {
+        field: label,
+        headerName: label,
+        flex: label === 'Shaft Type' ? 5 : 2,
+        renderCell: (params) => params.value ? parseVariantValue(params.value) : '-',
+        disableClickEventBubbling: true,
+        renderHeader: () => label,
+      };
+    
+      if (
         label === 'Outlet' ||
         label === 'Like New' ||
         label === 'Very Good' ||
         label === 'Good' ||
         label === 'Average'
-      ) ? customSortComparator : undefined,
-    }))
+      ) {
+        columnConfig.sortComparator = customSortComparator;
+      }
+    
+      return columnConfig;
+    })
+    
   ];
 
   return (
@@ -195,19 +198,17 @@ function ProductTable({ products, items }) {
         Clear filters
       </Button>
 
-      <div style={{ minWidth: '1000px' }}>
-        <DataGrid
-          rows={filteredVariants}
-          columns={columns}
-          pageSize={5}
-          autoHeight
-          disableColumnMenu
-          getRowId={(row) => row.id}
-          components={{
-            Toolbar: FiltersToolbar,
-          }}
-        />
-      </div>
+      <DataGrid
+        rows={filteredVariants}
+        columns={columns}
+        pageSize={5}
+        autoHeight
+        disableColumnMenu
+        getRowId={(row) => row.id}
+        components={{
+          Toolbar: FiltersToolbar,
+        }}
+      />
     </div>
   );
 }
