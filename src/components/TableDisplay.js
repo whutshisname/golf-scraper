@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Select, Button, MenuItem } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -89,9 +89,21 @@ function ProductTable({ products, items }) {
     return (price1 - price2) * orderDirection;
   }
 
+  const toolbarRef = useRef(null);  // This ref is used to capture the toolbar's width
+  const [toolbarWidth, setToolbarWidth] = useState('100%');  // Start with 100% as default
+
+  useEffect(() => {
+    if (toolbarRef.current) {
+      setToolbarWidth(toolbarRef.current.offsetWidth + 'px');  // Capture the width once the component mounts
+    }
+  }, []);
+
   function FiltersToolbar() {
     return (
-      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px', background: '#f5f5f5' }}>
+      <div
+        ref={toolbarRef}
+        style={{ display: 'flex', justifyContent: 'space-between', padding: '8px', background: '#f5f5f5' }}
+      >
         {variantLabels.map((label) => {
           if (
             label === 'Outlet' ||
@@ -119,7 +131,7 @@ function ProductTable({ products, items }) {
                   borderColor: 'rgba(0, 0, 0, 0.23)',
                   borderWidth: 1,
                   borderStyle: 'solid',
-                  backgroundColor: 'white'
+                  backgroundColor: 'white',
                 }}
                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.05)'}
                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
@@ -141,6 +153,7 @@ function ProductTable({ products, items }) {
       </div>
     );
   }
+
   const columns = [
     {
       field: 'product',
@@ -174,7 +187,6 @@ function ProductTable({ products, items }) {
         label === 'Average'
       ) ? customSortComparator : undefined,
     }))
-    ,
   ];
 
   return (
@@ -182,20 +194,23 @@ function ProductTable({ products, items }) {
       <Button onClick={clearFilters} variant="contained">
         Clear filters
       </Button>
-      <DataGrid
-        rows={filteredVariants}
-        columns={columns}
-        pageSize={5}
-        autoHeight
-        disableColumnMenu
-        getRowId={(row) => row.id}
-        components={{
-          Toolbar: FiltersToolbar,
-        }}
-      />
 
+      <div style={{ minWidth: '1000px' }}>
+        <DataGrid
+          rows={filteredVariants}
+          columns={columns}
+          pageSize={5}
+          autoHeight
+          disableColumnMenu
+          getRowId={(row) => row.id}
+          components={{
+            Toolbar: FiltersToolbar,
+          }}
+        />
+      </div>
     </div>
   );
 }
+
 
 export default ProductTable;
