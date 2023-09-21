@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Select, Button, MenuItem, Menu } from '@mui/material';
+import { Select, Button, MenuItem } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { List, ListItem, ListItemIcon, Checkbox, ListItemText } from '@mui/material';
 
 function ProductTable({ products, items }) {
   const variantLabels = [
@@ -105,7 +104,7 @@ function ProductTable({ products, items }) {
     variantLabels.forEach(label => {
       uniqueValues[label] = [...new Set(variants.map(variant => variant[label]))].filter(value => value);
     });
-
+  
     return (
       <div
         ref={toolbarRef}
@@ -158,8 +157,8 @@ function ProductTable({ products, items }) {
         })}
       </div>
     );
-  }
-
+  }  
+  
   const columns = [
     {
       field: 'product',
@@ -177,7 +176,7 @@ function ProductTable({ products, items }) {
         disableClickEventBubbling: true,
         renderHeader: () => label,
       };
-
+    
       if (
         label === 'Outlet' ||
         label === 'Like New' ||
@@ -187,15 +186,11 @@ function ProductTable({ products, items }) {
       ) {
         columnConfig.sortComparator = customSortComparator;
       }
-
+    
       return columnConfig;
     })
-
+    
   ];
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [visibleColumns, setVisibleColumns] = useState(variantLabels);
-  const displayedColumns = columns.filter(column => visibleColumns.includes(column.field));
 
   return (
     <div style={{ height: '100%', width: '100%' }}>
@@ -203,49 +198,9 @@ function ProductTable({ products, items }) {
         Clear filters
       </Button>
 
-      <Button
-        onClick={(event) => setAnchorEl(event.currentTarget)}
-        variant="outlined"
-      >
-        Toggle Columns
-      </Button>
-
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={() => setAnchorEl(null)}
-      >
-        <List>
-          {variantLabels.map((label) => (
-            <ListItem key={label} dense button onClick={() => {
-              if (visibleColumns.includes(label)) {
-                setVisibleColumns(prev => prev.filter(col => col !== label));
-              } else {
-                setVisibleColumns(prev => [...prev, label]);
-              }
-              // Optionally close the menu after a selection:
-              // setAnchorEl(null);
-            }}>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={visibleColumns.includes(label)}
-                  tabIndex={-1}
-                  disableRipple
-                />
-              </ListItemIcon>
-              <ListItemText primary={`Show ${label}`} />
-            </ListItem>
-          ))}
-        </List>
-      </Menu>
-
-
-
       <DataGrid
         rows={filteredVariants}
-        columns={displayedColumns}
+        columns={columns}
         pageSize={5}
         autoHeight
         getRowHeight={() => 'auto'}
@@ -255,7 +210,6 @@ function ProductTable({ products, items }) {
           Toolbar: FiltersToolbar,
         }}
       />
-
     </div>
   );
 }

@@ -146,42 +146,57 @@ const items = [
   },
   {
     "cgid": "wedges",
-    "displayValue": "JAWS MD5 Tour Grey Wedges",
+    "displayValue": "JAWS MD5 Tour Grey",
     "pid": "wedges-2019-md5-jaws-tour-grey"
   },
   {
     "cgid": "wedges",
-    "displayValue": "JAWS MD5 Platinum Chrome Wedges",
+    "displayValue": "JAWS MD5 Platinum Chrome",
     "pid": "wedges-2019-md5-jaws-chrome"
   },
   {
     "cgid": "iron-sets",
-    "displayValue": "Apex 21 Irons",
+    "displayValue": "Apex 21",
     "pid": "irons-2021-apex"
   },
   {
     "cgid": "iron-sets",
-    "displayValue": "Rogue ST Pro Irons",
+    "displayValue": "Rogue ST Pro",
     "pid": "irons-2022-rogue-st-pro"
   },
   {
     "cgid": "iron-sets",
-    "displayValue": "Apex Pro 21 Irons",
+    "displayValue": "Apex Pro 21",
     "pid": "irons-2021-apex-pro"
   },
   {
     "cgid": "other-brand-single-irons",
-    "displayValue": "TaylorMade 2022 Stealth Irons",
+    "displayValue": "TaylorMade 2022 Stealth",
     "pid": "taylormade-stealth-irons-2022"
   },
   {
     "cgid": "other-brand-single-irons",
-    "displayValue": "TaylorMade SIM2 Max OS Irons",
+    "displayValue": "TaylorMade SIM2 Max OS",
     "pid": "taylormade-sim2-max-os-irons-2021"
   },
   {
     "cgid": "single-irons",
-    "displayValue": "Paradym Irons",
+    "displayValue": "Paradym",
+    "pid": "irons-2023-paradym"
+  },
+  {
+    "cgid": "single-irons",
+    "displayValue": "Paradym X",
+    "pid": "irons-2023-paradym-x"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Paradym X",
+    "pid": "irons-2023-paradym-x"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Paradym",
     "pid": "irons-2023-paradym"
   }
 ];
@@ -193,12 +208,14 @@ export default function CheckboxPage() {
   const [productData, setProductData] = useState([]);
 
   const handleItemChange = async (selectedItemIds) => {
+    console.log("Selected Items:", selectedItemIds);
     setSelectedItems(selectedItemIds);
 
-    let pairs = selectedItemIds.map((pid) => {
-      const foundItem = items.find((i) => i.pid === pid);
-      return foundItem ? { pid: foundItem.pid, cgid: foundItem.cgid } : null;
-    }).filter((pair) => pair !== null);
+    const pairs = selectedItemIds.map((id) => {
+      const [pid, cgid] = id.split('|');
+      return { pid, cgid };
+    });
+    console.log("Pairs:", pairs);
 
     // Use Promise.all to fetch data for all pairs in parallel
     const fetchData = async (pair) => {
@@ -207,8 +224,11 @@ export default function CheckboxPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pairs: [pair] }),
       };
+      console.log("Sending request with body:", requestOptions.body);
       const response = await fetch('/api/product-variants', requestOptions);
-      return await response.json();
+      const data = await response.json();
+      console.log("Received data:", data);
+      return data;
     };
 
     const allDataPromises = pairs.map((pair) => fetchData(pair));

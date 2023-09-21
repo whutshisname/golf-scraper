@@ -18,7 +18,7 @@ function GroupedCheckboxList({ items, cgid, handleItemChange, selectedItems }) {
 
   const handleSelectAllChange = () => {
     setSelectAllChecked(!selectAllChecked);
-    const allItemIds = filteredItems.map((item) => item.pid);
+    const allItemIds = filteredItems.map((item) => `${item.pid}|${item.cgid}`);
     if (!selectAllChecked) {
       handleItemChange(allItemIds);
     } else {
@@ -26,12 +26,13 @@ function GroupedCheckboxList({ items, cgid, handleItemChange, selectedItems }) {
     }
   };
 
-  const handleItemChangeInGroup = (checked, itemId) => {
+  const handleItemChangeInGroup = (checked, itemId, itemCgid) => {
+    const uniqueId = `${itemId}|${itemCgid}`;
     const selectedItemIds = [...selectedItems];
     if (checked) {
-      selectedItemIds.push(itemId);
+      selectedItemIds.push(uniqueId);
     } else {
-      const index = selectedItemIds.indexOf(itemId);
+      const index = selectedItemIds.indexOf(uniqueId);
       if (index !== -1) {
         selectedItemIds.splice(index, 1);
       }
@@ -58,8 +59,8 @@ function GroupedCheckboxList({ items, cgid, handleItemChange, selectedItems }) {
               <input
                 type="checkbox"
                 value={item.pid}
-                checked={selectedItems.includes(item.pid)}
-                onChange={(e) => handleItemChangeInGroup(e.target.checked, item.pid)}
+                checked={selectedItems.includes(`${item.pid}|${item.cgid}`)}
+                onChange={(e) => handleItemChangeInGroup(e.target.checked, item.pid, item.cgid)}
               />
               {item.displayValue}
             </label>
