@@ -46,6 +46,21 @@ const items = [
   },
   {
     "cgid": "drivers",
+    "displayValue": "Paradym",
+    "pid": "drivers-2023-paradym"
+  },
+  {
+    "cgid": "drivers",
+    "displayValue": "Paradym X",
+    "pid": "drivers-2023-paradym-x"
+  },
+  {
+    "cgid": "drivers",
+    "displayValue": "Paradym Triple Diamond",
+    "pid": "drivers-2023-paradym-td"
+  },
+  {
+    "cgid": "drivers",
     "displayValue": "Rogue ST Max LS",
     "pid": "drivers-2022-rogue-st-max-ls"
   },
@@ -73,6 +88,16 @@ const items = [
     "cgid": "fairway-woods",
     "displayValue": "Epic Speed",
     "pid": "fwoods-2021-epic-speed"
+  },
+  {
+    "cgid": "fairway-woods",
+    "displayValue": "Paradym X",
+    "pid": "fwoods-2023-paradym-x"
+  },
+  {
+    "cgid": "fairway-woods",
+    "displayValue": "Paradym",
+    "pid": "fwoods-2023-paradym"
   },
   {
     "cgid": "fairway-woods",
@@ -153,6 +178,11 @@ const items = [
     "cgid": "other-brand-single-irons",
     "displayValue": "TaylorMade SIM2 Max OS Irons",
     "pid": "taylormade-sim2-max-os-irons-2021"
+  },
+  {
+    "cgid": "single-irons",
+    "displayValue": "Paradym Irons",
+    "pid": "irons-2023-paradym"
   }
 ];
 
