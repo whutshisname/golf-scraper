@@ -6,11 +6,6 @@ import ProductTable from '../components/TableDisplay';
 const items = [
   {
     "cgid": "drivers",
-    "displayValue": "Epic Flash",
-    "pid": "drivers-2019-epic-flash"
-  },
-  {
-    "cgid": "drivers",
     "displayValue": "Epic Max",
     "pid": "drivers-2021-epic-max"
   },
@@ -23,21 +18,6 @@ const items = [
     "cgid": "drivers",
     "displayValue": "Epic Speed",
     "pid": "drivers-2021-epic-speed"
-  },
-  {
-    "cgid": "drivers",
-    "displayValue": "Mavrik",
-    "pid": "drivers-2020-mavrik"
-  },
-  {
-    "cgid": "drivers",
-    "displayValue": "Mavrik Max",
-    "pid": "drivers-2020-mavrik-max"
-  },
-  {
-    "cgid": "drivers",
-    "displayValue": "Mavrik SZ",
-    "pid": "drivers-2020-mavrik-sz"
   },
   {
     "cgid": "drivers",
@@ -76,21 +56,6 @@ const items = [
   },
   {
     "cgid": "fairway-woods",
-    "displayValue": "Epic Flash",
-    "pid": "fwoods-2019-epic-flash"
-  },
-  {
-    "cgid": "fairway-woods",
-    "displayValue": "Epic Max",
-    "pid": "fwoods-2021-epic-max"
-  },
-  {
-    "cgid": "fairway-woods",
-    "displayValue": "Epic Speed",
-    "pid": "fwoods-2021-epic-speed"
-  },
-  {
-    "cgid": "fairway-woods",
     "displayValue": "Paradym X",
     "pid": "fwoods-2023-paradym-x"
   },
@@ -113,21 +78,6 @@ const items = [
     "cgid": "hybrids",
     "displayValue": "Apex 21",
     "pid": "hybrids-2021-apex"
-  },
-  {
-    "cgid": "hybrids",
-    "displayValue": "Apex Pro 21",
-    "pid": "hybrids-2021-apex-pro"
-  },
-  {
-    "cgid": "hybrids",
-    "displayValue": "Epic Flash",
-    "pid": "hybrids-2019-epic-flash"
-  },
-  {
-    "cgid": "hybrids",
-    "displayValue": "Epic Flash - JV",
-    "pid": "hybrids-2019-epic-flash-jv"
   },
   {
     "cgid": "hybrids",
@@ -156,30 +106,10 @@ const items = [
   },
   {
     "cgid": "iron-sets",
-    "displayValue": "Apex 21",
-    "pid": "irons-2021-apex"
-  },
-  {
-    "cgid": "iron-sets",
     "displayValue": "Rogue ST Pro",
     "pid": "irons-2022-rogue-st-pro"
   },
   {
-    "cgid": "iron-sets",
-    "displayValue": "Apex Pro 21",
-    "pid": "irons-2021-apex-pro"
-  },
-  {
-    "cgid": "other-brand-single-irons",
-    "displayValue": "TaylorMade 2022 Stealth",
-    "pid": "taylormade-stealth-irons-2022"
-  },
-  {
-    "cgid": "other-brand-single-irons",
-    "displayValue": "TaylorMade SIM2 Max OS",
-    "pid": "taylormade-sim2-max-os-irons-2021"
-  },
-  {
     "cgid": "single-irons",
     "displayValue": "Paradym",
     "pid": "irons-2023-paradym"
@@ -198,6 +128,26 @@ const items = [
     "cgid": "iron-sets",
     "displayValue": "Paradym",
     "pid": "irons-2023-paradym"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Rogue ST MAX",
+    "pid": "irons-2022-rogue-st-max"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Rogue ST MAX OS",
+    "pid": "irons-2022-rogue-st-max-os"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Great Big Bertha",
+    "pid": "irons-2023-gbb"
+  },
+  {
+    "cgid": "iron-sets",
+    "displayValue": "Big Bertha",
+    "pid": "irons-2023-big-bertha"
   }
 ];
 
