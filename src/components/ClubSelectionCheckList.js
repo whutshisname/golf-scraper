@@ -11,8 +11,8 @@ function GroupedCheckboxList({ items, cgid, handleItemChange, selectedItems }) {
   const formattedCgid = (item) => formatCgid(item.cgid);
 
   const filteredItems = items
-    .filter((item) => item.cgid === cgid)
-    .sort((a, b) => formattedCgid(a).localeCompare(formattedCgid(b))); // sort the items by formatted cgid
+  .filter((item) => item.cgid === cgid)
+  .sort((a, b) => a.displayValue.localeCompare(b.displayValue)); 
 
   const [selectAllChecked, setSelectAllChecked] = useState(false);
 
