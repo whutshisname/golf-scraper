@@ -3,7 +3,7 @@ import ExpandJSONSection from '../components/ExpandJSONSection';
 import GroupedCheckboxList from '../components/ClubSelectionCheckList';
 import ProductTable from '../components/TableDisplay';
 import items from '../data/clubTypes.json';
-
+import LimitedAutocomplete  from '../components/autocomplete'
 
 export default function CheckboxPage() {
   const uniqueCgids = Array.from(new Set(items.map((item) => item.cgid)));
@@ -57,6 +57,7 @@ export default function CheckboxPage() {
           <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
             <ProductTable products={productData} items={items} />
             <ExpandJSONSection data={productData} />
+            <LimitedAutocomplete maxItems={1} />
           </div>
 
         )
