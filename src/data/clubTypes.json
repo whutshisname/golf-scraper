@@ -148,5 +148,40 @@
       "cgid": "iron-sets",
       "displayValue": "Mavrik Max",
       "pid": "irons-2020-mavrik-max"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Mitsubishi Tensei CK Pro Orange 60",
+      "pid": "shafts-optifit-2-mitsubishi-tensei-ck-pro-orange-60"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Mitsubishi Kaili White 60",
+      "pid": "shafts-optifit-2-mitsubishi-kaili-white-60"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Mitsubishi Kaili White 70",
+      "pid": "shafts-optifit-2-mitsubishi-kaili-white-70"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Mitsubishi Tensei CK Orange 60",
+      "pid": "shafts-optifit-2-mca-tensei-orange-60-graphite-shaft"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Fujikura Ventus TR",
+      "pid": "shafts-optifit-2-fujikura-ventus-tr-6"
+    },
+    {
+      "cgid": "hybrids",
+      "displayValue": "Paradym",
+      "pid": "hybrids-2023-paradym"
+    },
+    {
+      "cgid": "hybrids",
+      "displayValue": "Paradym X",
+      "pid": "hybrids-2023-paradym-x"
     }
   ]
