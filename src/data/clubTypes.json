@@ -81,11 +81,6 @@
     },
     {
       "cgid": "hybrids",
-      "displayValue": "Rogue ST Max",
-      "pid": "hybrids-2022-rogue-st-max"
-    },
-    {
-      "cgid": "hybrids",
       "displayValue": "Super Hybrid",
       "pid": "hybrids-2020-super"
     },
@@ -183,5 +178,10 @@
       "cgid": "hybrids",
       "displayValue": "Paradym X",
       "pid": "hybrids-2023-paradym-x"
+    },
+    {
+      "cgid": "hybrids",
+      "displayValue": "Paradym Super Hybrid",
+      "pid": "hybrids-2023-paradym-super"
     }
   ]
