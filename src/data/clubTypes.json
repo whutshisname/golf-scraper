@@ -166,8 +166,13 @@
     },
     {
       "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR",
+      "displayValue": "Fujikura Ventus TR 6",
       "pid": "shafts-optifit-2-fujikura-ventus-tr-6"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Fujikura Ventus TR 7",
+      "pid": "shafts-optifit-2-fujikura-ventus-tr-7"
     },
     {
       "cgid": "hybrids",
