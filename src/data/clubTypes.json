@@ -166,12 +166,17 @@
     },
     {
       "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 6",
+      "displayValue": "Fujikura Ventus TR 6 (Blue)",
       "pid": "shafts-optifit-2-fujikura-ventus-tr-6"
     },
     {
       "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 7",
+      "displayValue": "Fujikura Ventus TR 7 (Black)",
+      "pid": "shafts-optifit-2-fujikura-ventus-tr-black-7"
+    },
+    {
+      "cgid": "optifit-shafts",
+      "displayValue": "Fujikura Ventus TR 7 (Blue)",
       "pid": "shafts-optifit-2-fujikura-ventus-tr-7"
     },
     {
