@@ -54,7 +54,7 @@ function ProductTable({ products, items }) {
         }
         return acc;
       }, {});
-      return { id: product.pid + "-" + variantIndex, ...variantObj, product: product.pid };
+      return { id: product.pid + '-' + variantIndex, ...variantObj, product: product.pid };
     })
   );
 
@@ -68,47 +68,48 @@ function ProductTable({ products, items }) {
   );
 
   function customSortComparator(v1, v2, cellParams1, cellParams2) {
-    const getPrice = value => {
+    const getPrice = (value) => {
       if (Array.isArray(value) && value[1] && value[1] !== '-') {
         return parseFloat(value[1].replace('$', ''));
       }
-      return null;  // using null to represent empty values (i.e., '-')
-    }
-
+      return null;
+    };
+  
     const price1 = getPrice(v1);
     const price2 = getPrice(v2);
+  
+    // Ensure sortModel is defined and extract the sort direction
+    const sortModelExists = cellParams1.api && cellParams1.api.getSortModel && cellParams1.api.getSortModel().length;
+    const isAsc = sortModelExists && cellParams1.api.getSortModel()[0].sort === 'asc';
 
-    // Safely check if sortModel exists and has items
-    const sortModelExists = cellParams1.sortModel && cellParams1.sortModel.length;
-    const orderDirection = sortModelExists && cellParams1.sortModel[0].sort === 'asc' ? 1 : -1;
-
+    console.log('isAsc',isAsc);
+  
     if (price1 === null && price2 === null) return 0;
-    if (price1 === null) return 1;  // Always place null at the bottom
-    if (price2 === null) return -1; // Always place null at the bottom
-
-    return (price1 - price2) * orderDirection;
+    if (price1 === null) return isAsc ? 1 : -1;
+    if (price2 === null) return isAsc ? -1 : 1;
+  
+    return price1 - price2;
   }
 
-  const toolbarRef = useRef(null);  // This ref is used to capture the toolbar's width
-  const [toolbarWidth, setToolbarWidth] = useState('100%');  // Start with 100% as default
+  const toolbarRef = useRef(null);
+  const [toolbarWidth, setToolbarWidth] = useState('100%');
 
   useEffect(() => {
     if (toolbarRef.current) {
-      setToolbarWidth(toolbarRef.current.offsetWidth + 'px');  // Capture the width once the component mounts
+      setToolbarWidth(toolbarRef.current.offsetWidth + 'px');
     }
   }, []);
 
   function FiltersToolbar() {
-    // Determine unique values for each label
     const uniqueValues = {};
-    variantLabels.forEach(label => {
-      uniqueValues[label] = [...new Set(variants.map(variant => variant[label]))].filter(value => value);
+    variantLabels.forEach((label) => {
+      uniqueValues[label] = [...new Set(variants.map((variant) => variant[label]))].filter((value) => value);
     });
-  
+
     return (
       <div
         ref={toolbarRef}
-        style={{ display: 'flex', justifyContent: 'flex-start', padding: '8px', background: '#f5f5f5' }} // justifyContent is changed to 'flex-start'
+        style={{ display: 'flex', justifyContent: 'flex-start', padding: '8px', background: '#f5f5f5' }}
       >
         {variantLabels.map((label) => {
           if (
@@ -123,7 +124,7 @@ function ProductTable({ products, items }) {
             return null;
           }
           return (
-            <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '16px' }}> {/* added marginRight for spacing between filters */}
+            <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '16px' }}>
               <span>{label}</span>
               <Select
                 onBlur={(e) => e.stopPropagation()}
@@ -141,8 +142,8 @@ function ProductTable({ products, items }) {
                   borderStyle: 'solid',
                   backgroundColor: 'white',
                 }}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.05)'}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.05)')}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = 'white')}
                 IconComponent={ArrowDropDownIcon}
               >
                 <MenuItem value="">All</MenuItem>
@@ -157,8 +158,8 @@ function ProductTable({ products, items }) {
         })}
       </div>
     );
-  }  
-  
+  }
+
   const columns = [
     {
       field: 'product',
@@ -172,24 +173,17 @@ function ProductTable({ products, items }) {
         field: label,
         headerName: label,
         flex: label === 'Shaft Type' ? 5 : 1,
-        renderCell: (params) => params.value ? parseVariantValue(params.value) : '-',
+        renderCell: (params) => (params.value ? parseVariantValue(params.value) : '-'),
         disableClickEventBubbling: true,
         renderHeader: () => label,
       };
-    
-      if (
-        label === 'Outlet' ||
-        label === 'Like New' ||
-        label === 'Very Good' ||
-        label === 'Good' ||
-        label === 'Average'
-      ) {
+
+      if (label === 'Outlet' || label === 'Like New' || label === 'Very Good' || label === 'Good' || label === 'Average') {
         columnConfig.sortComparator = customSortComparator;
       }
-    
+
       return columnConfig;
-    })
-    
+    }),
   ];
 
   return (
@@ -213,6 +207,5 @@ function ProductTable({ products, items }) {
     </div>
   );
 }
-
 
 export default ProductTable;

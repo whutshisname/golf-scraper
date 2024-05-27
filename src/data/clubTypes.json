@@ -60,21 +60,6 @@
       "pid": "fwoods-2023-paradym"
     },
     {
-      "cgid": "fairway-woods",
-      "displayValue": "Rogue ST LS",
-      "pid": "fwoods-2022-rogue-st-ls"
-    },
-    {
-      "cgid": "fairway-woods",
-      "displayValue": "Rogue ST Max",
-      "pid": "fwoods-2022-rogue-st-max"
-    },
-    {
-      "cgid": "hybrids",
-      "displayValue": "Apex 21",
-      "pid": "hybrids-2021-apex"
-    },
-    {
       "cgid": "hybrids",
       "displayValue": "Epic Super Hybrid",
       "pid": "hybrids-2022-epic-super"
@@ -100,16 +85,6 @@
       "pid": "irons-2022-rogue-st-pro"
     },
     {
-      "cgid": "single-irons",
-      "displayValue": "Paradym",
-      "pid": "irons-2023-paradym"
-    },
-    {
-      "cgid": "single-irons",
-      "displayValue": "Paradym X",
-      "pid": "irons-2023-paradym-x"
-    },
-    {
       "cgid": "iron-sets",
       "displayValue": "Paradym X",
       "pid": "irons-2023-paradym-x"
@@ -118,31 +93,6 @@
       "cgid": "iron-sets",
       "displayValue": "Paradym",
       "pid": "irons-2023-paradym"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Rogue ST MAX",
-      "pid": "irons-2022-rogue-st-max"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Rogue ST MAX OS",
-      "pid": "irons-2022-rogue-st-max-os"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Great Big Bertha",
-      "pid": "irons-2023-gbb"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Big Bertha",
-      "pid": "irons-2023-big-bertha"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Mavrik Max",
-      "pid": "irons-2020-mavrik-max"
     },
     {
       "cgid": "optifit-shafts",
@@ -151,18 +101,8 @@
     },
     {
       "cgid": "optifit-shafts",
-      "displayValue": "Mitsubishi Kaili White 60",
-      "pid": "shafts-optifit-2-mitsubishi-kaili-white-60"
-    },
-    {
-      "cgid": "optifit-shafts",
       "displayValue": "Mitsubishi Kaili White 70",
       "pid": "shafts-optifit-2-mitsubishi-kaili-white-70"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Mitsubishi Tensei CK Orange 60",
-      "pid": "shafts-optifit-2-mca-tensei-orange-60-graphite-shaft"
     },
     {
       "cgid": "optifit-shafts",
@@ -198,5 +138,15 @@
       "cgid": "hybrids",
       "displayValue": "Paradym Super Hybrid",
       "pid": "hybrids-2023-paradym-super"
+    },
+    {
+      "cgid": "wedges",
+      "displayValue": "Jaws Raw Full Face Groove",
+      "pid": "wedges-2023-jaws-raw-full-face-chrome"
+    },
+    {
+      "cgid": "wedges",
+      "displayValue": "Jaws Raw Face Chrome",
+      "pid": "wedges-2022-jaws-raw-chrome"
     }
   ]
