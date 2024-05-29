@@ -96,16 +96,6 @@
     },
     {
       "cgid": "optifit-shafts",
-      "displayValue": "Mitsubishi Tensei CK Pro Orange 60",
-      "pid": "shafts-optifit-2-mitsubishi-tensei-ck-pro-orange-60"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Mitsubishi Kaili White 70",
-      "pid": "shafts-optifit-2-mitsubishi-kaili-white-70"
-    },
-    {
-      "cgid": "optifit-shafts",
       "displayValue": "Fujikura Ventus TR 6 (Blue)",
       "pid": "shafts-optifit-2-fujikura-ventus-tr-6"
     },
@@ -148,5 +138,30 @@
       "cgid": "wedges",
       "displayValue": "Jaws Raw Face Chrome",
       "pid": "wedges-2022-jaws-raw-chrome"
+    },
+    {
+      "cgid": "optifit-3-shafts",
+      "displayValue": "Fujikura Ventus Blue HB 8",
+      "pid": "shafts-optifit-3-fujikura-ventus-blue-hb-8"
+    },
+    {
+      "cgid": "shafts",
+      "displayValue": "Fujikura Ventus TR Black 7",
+      "pid": "shafts-optifit-3-fujikura-ventus-tr-black-7."
+    },
+    {
+      "cgid": "optifit-3-shafts",
+      "displayValue": "Mitsubishi Tensei AV White 75",
+      "pid": "shafts-optifit-3-mca-tensei-av-white-75-2022"
+    },
+    {
+      "cgid": "shafts",
+      "displayValue": "Fujikura Ventus TR Black 6",
+      "pid": "shafts-optifit-3-fujikura-ventus-tr-black-6"
+    },
+    {
+      "cgid": "optifit-3-shafts",
+      "displayValue": "Fujikura Ventus Blue HB 8",
+      "pid": "shafts-optifit-3-fujikura-ventus-blue-hb-8"
     }
   ]
