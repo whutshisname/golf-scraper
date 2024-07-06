@@ -1,21 +1,6 @@
 [
     {
       "cgid": "drivers",
-      "displayValue": "Epic Max",
-      "pid": "drivers-2021-epic-max"
-    },
-    {
-      "cgid": "drivers",
-      "displayValue": "Epic Max LS",
-      "pid": "drivers-2021-epic-max-ls"
-    },
-    {
-      "cgid": "drivers",
-      "displayValue": "Epic Speed",
-      "pid": "drivers-2021-epic-speed"
-    },
-    {
-      "cgid": "drivers",
       "displayValue": "Rogue ST Max",
       "pid": "drivers-2022-rogue-st-max"
     },
@@ -46,11 +31,6 @@
     },
     {
       "cgid": "fairway-woods",
-      "displayValue": "Apex Utility Wood",
-      "pid": "fwoods-2022-apex-utility-wood"
-    },
-    {
-      "cgid": "fairway-woods",
       "displayValue": "Paradym X",
       "pid": "fwoods-2023-paradym-x"
     },
@@ -65,11 +45,6 @@
       "pid": "hybrids-2022-epic-super"
     },
     {
-      "cgid": "hybrids",
-      "displayValue": "Super Hybrid",
-      "pid": "hybrids-2020-super"
-    },
-    {
       "cgid": "wedges",
       "displayValue": "JAWS MD5 Tour Grey",
       "pid": "wedges-2019-md5-jaws-tour-grey"
@@ -78,11 +53,6 @@
       "cgid": "wedges",
       "displayValue": "JAWS MD5 Platinum Chrome",
       "pid": "wedges-2019-md5-jaws-chrome"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Rogue ST Pro",
-      "pid": "irons-2022-rogue-st-pro"
     },
     {
       "cgid": "iron-sets",
@@ -160,8 +130,8 @@
       "pid": "shafts-optifit-3-fujikura-ventus-tr-black-6"
     },
     {
-      "cgid": "optifit-3-shafts",
-      "displayValue": "Fujikura Ventus Blue HB 8",
-      "pid": "shafts-optifit-3-fujikura-ventus-blue-hb-8"
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym Triple Diamond",
+      "pid": "fwoods-2023-paradym-td"
     }
   ]
