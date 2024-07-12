@@ -130,6 +130,16 @@
       "pid": "shafts-optifit-3-fujikura-ventus-tr-black-6"
     },
     {
+      "cgid": "shafts",
+      "displayValue": "Fujikura TR 6 Graphite Optifit 3",
+      "pid": "shafts-optifit-3-fujikura-ventus-tr-6"
+    },
+    {
+      "cgid": "shafts",
+      "displayValue": "Fujikura Ventus Black 6 Optifit 3",
+      "pid": "shafts-optifit-3-fujikura-ventus-black-6"
+    },
+    {
       "cgid": "fairway-woods",
       "displayValue": "Paradym Triple Diamond",
       "pid": "fwoods-2023-paradym-td"
