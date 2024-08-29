@@ -143,5 +143,45 @@
       "cgid": "fairway-woods",
       "displayValue": "Paradym Triple Diamond",
       "pid": "fwoods-2023-paradym-td"
+    },
+    {
+      "cgid": "drivers",
+      "displayValue": "Paradym AI Smoke Max",
+      "pid": "drivers-2024-paradym-ai-smoke-max"
+    },
+    {
+      "cgid": "drivers",
+      "displayValue": "Paradym AI Smoke Triple Diamond",
+      "pid": "drivers-2024-paradym-ai-smoke-td"
+    },
+    {
+      "cgid": "drivers",
+      "displayValue": "Paradym AI Smoke Fast",
+      "pid": "drivers-2024-paradym-ai-smoke-max-fast"
+    },
+    {
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym AI Smoke Triple Diamond",
+      "pid": "fwoods-2024-paradym-ai-smoke-td"
+    },
+    {
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym AI Smoke Fast",
+      "pid": "fwoods-2024-paradym-ai-smoke-max-fast"
+    },
+    {
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym AI Smoke Fast",
+      "pid": "fwoods-2024-paradym-ai-smoke-max-fast"
+    },
+    {
+      "cgid": "iron-sets",
+      "displayValue": "Paradym AI Smoke",
+      "pid": "irons-2024-paradym-ai-smoke"
+    },
+    {
+      "cgid": "hybrids",
+      "displayValue": "Paradym AI Smoke",
+      "pid": "hybrids-2024-paradym-ai-smoke"
     }
   ]
