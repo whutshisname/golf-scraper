@@ -183,5 +183,15 @@
       "cgid": "hybrids",
       "displayValue": "Paradym AI Smoke",
       "pid": "hybrids-2024-paradym-ai-smoke"
+    },
+    {
+      "cgid": "iron-sets",
+      "displayValue": "APEX MB (24)",
+      "pid": "irons-2024-apex-mb-chrome"
+    },
+    {
+      "cgid": "iron-sets",
+      "displayValue": "APEX Pro (24)",
+      "pid": "irons-2024-apex-pro"
     }
   ]
