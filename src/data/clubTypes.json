@@ -31,13 +31,8 @@
     },
     {
       "cgid": "fairway-woods",
-      "displayValue": "Paradym X",
-      "pid": "fwoods-2023-paradym-x"
-    },
-    {
-      "cgid": "fairway-woods",
-      "displayValue": "Paradym",
-      "pid": "fwoods-2023-paradym"
+      "displayValue": "Paradym Triple Diamond",
+      "pid": "fwoods-2023-paradym-td"
     },
     {
       "cgid": "hybrids",
@@ -55,36 +50,6 @@
       "pid": "wedges-2019-md5-jaws-chrome"
     },
     {
-      "cgid": "iron-sets",
-      "displayValue": "Paradym X",
-      "pid": "irons-2023-paradym-x"
-    },
-    {
-      "cgid": "iron-sets",
-      "displayValue": "Paradym",
-      "pid": "irons-2023-paradym"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 6 (Blue)",
-      "pid": "shafts-optifit-2-fujikura-ventus-tr-6"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 6 (Black)",
-      "pid": "shafts-optifit-2-fujikura-ventus-tr-black-6"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 7 (Black)",
-      "pid": "shafts-optifit-2-fujikura-ventus-tr-black-7"
-    },
-    {
-      "cgid": "optifit-shafts",
-      "displayValue": "Fujikura Ventus TR 7 (Blue)",
-      "pid": "shafts-optifit-2-fujikura-ventus-tr-7"
-    },
-    {
       "cgid": "hybrids",
       "displayValue": "Paradym",
       "pid": "hybrids-2023-paradym"
@@ -98,51 +63,6 @@
       "cgid": "hybrids",
       "displayValue": "Paradym Super Hybrid",
       "pid": "hybrids-2023-paradym-super"
-    },
-    {
-      "cgid": "wedges",
-      "displayValue": "Jaws Raw Full Face Groove",
-      "pid": "wedges-2023-jaws-raw-full-face-chrome"
-    },
-    {
-      "cgid": "wedges",
-      "displayValue": "Jaws Raw Face Chrome",
-      "pid": "wedges-2022-jaws-raw-chrome"
-    },
-    {
-      "cgid": "optifit-3-shafts",
-      "displayValue": "Fujikura Ventus Blue HB 8",
-      "pid": "shafts-optifit-3-fujikura-ventus-blue-hb-8"
-    },
-    {
-      "cgid": "shafts",
-      "displayValue": "Fujikura Ventus TR Black 7",
-      "pid": "shafts-optifit-3-fujikura-ventus-tr-black-7."
-    },
-    {
-      "cgid": "optifit-3-shafts",
-      "displayValue": "Mitsubishi Tensei AV White 75",
-      "pid": "shafts-optifit-3-mca-tensei-av-white-75-2022"
-    },
-    {
-      "cgid": "shafts",
-      "displayValue": "Fujikura Ventus TR Black 6",
-      "pid": "shafts-optifit-3-fujikura-ventus-tr-black-6"
-    },
-    {
-      "cgid": "shafts",
-      "displayValue": "Fujikura TR 6 Graphite Optifit 3",
-      "pid": "shafts-optifit-3-fujikura-ventus-tr-6"
-    },
-    {
-      "cgid": "shafts",
-      "displayValue": "Fujikura Ventus Black 6 Optifit 3",
-      "pid": "shafts-optifit-3-fujikura-ventus-black-6"
-    },
-    {
-      "cgid": "fairway-woods",
-      "displayValue": "Paradym Triple Diamond",
-      "pid": "fwoods-2023-paradym-td"
     },
     {
       "cgid": "drivers",
@@ -170,11 +90,6 @@
       "pid": "fwoods-2024-paradym-ai-smoke-max-fast"
     },
     {
-      "cgid": "fairway-woods",
-      "displayValue": "Paradym AI Smoke Fast",
-      "pid": "fwoods-2024-paradym-ai-smoke-max-fast"
-    },
-    {
       "cgid": "iron-sets",
       "displayValue": "Paradym AI Smoke",
       "pid": "irons-2024-paradym-ai-smoke"
@@ -193,5 +108,30 @@
       "cgid": "iron-sets",
       "displayValue": "APEX Pro (24)",
       "pid": "irons-2024-apex-pro"
+    },
+    {
+      "cgid": "wedges",
+      "displayValue": "Opus Platinum Chrome Wedges",
+      "pid": "wedges-2024-opus-platinum-chrome"
+    },
+    {
+      "cgid": "wedges",
+      "displayValue": "Opus Brushed Chrome Wedges",
+      "pid": "wedges-2024-opus-chrome"
+    },
+    {
+      "cgid": "iron-sets",
+      "displayValue": "Apex Ti Fusion Irons",
+      "pid": "irons-2024-apex-ti-fusion"
+    },
+    {
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym Ai Smoke MAX D",
+      "pid": "fwoods-2024-paradym-ai-smoke-max-d"
+    },
+    {
+      "cgid": "fairway-woods",
+      "displayValue": "Paradym Ai Smoke MAX",
+      "pid": "fwoods-2024-paradym-ai-smoke-max"
     }
   ]
