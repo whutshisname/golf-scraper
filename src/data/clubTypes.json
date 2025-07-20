@@ -133,5 +133,20 @@
       "cgid": "fairway-woods",
       "displayValue": "Paradym Ai Smoke MAX",
       "pid": "fwoods-2024-paradym-ai-smoke-max"
+    },
+    {
+      "cgid": "single-irons",
+      "displayValue": "Apex UT 24",
+      "pid": "irons-2024-apex-utility"
+    },
+    {
+      "cgid": "single-irons",
+      "displayValue": "Apex Ti Fusion",
+      "pid": "irons-2024-apex-ti-fusion"
+    },
+    {
+      "cgid": "single-irons",
+      "displayValue": "Apex CB 24",
+      "pid": "irons-2024-apex-cb-chrome"
     }
   ]
